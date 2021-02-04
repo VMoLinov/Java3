@@ -1,44 +1,47 @@
 package lesson1.generics;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 
-public class Box<E> {
+public class Box<E extends Fruit> {
 
-    private E[] data;
-    private float weight;
-    private int currentSize;
+    private ArrayList<E> data;
 
-
-    public Box(int size, float weight) {
-        data = (E[]) new Object[size];
-        this.weight = weight;
-        currentSize = 0;
+    public Box() {
+        data = new ArrayList<>();
     }
 
     public void addFruit(E value) {
-        addFruit(currentSize++, value);
+        data.add(value);
     }
 
-    private void addFruit(int index, E value) {
-        data[index] = value;
+    public void removeFruit(E value) {
+        data.remove(value);
     }
 
-    public void removeFruit() {
-        data[currentSize-- - 1] = null;
-    }
-    
     public float sumWeight() {
-        return weight * (currentSize);
+        if (!data.isEmpty()) {
+            for (E fruit : data) {
+                return fruit.getWeight() * data.size();
+            }
+        }
+        return 0;
     }
 
-    public boolean compare (Box value) {
-        return this.sumWeight() == value.sumWeight();
+    public boolean compare(Box<?> box) {
+        return this.sumWeight() == box.sumWeight();
+    }
+
+    public void transfer(Box<E> box) {
+        for (E item : data) {
+            box.addFruit(item);
+        }
+        data.clear();
     }
 
     @Override
     public String toString() {
-        return "Box{" + Arrays.toString(data) +
-                ", currentSize = " + currentSize +
+        return "Box{" +
+                "data=" + data +
                 '}';
     }
 }
