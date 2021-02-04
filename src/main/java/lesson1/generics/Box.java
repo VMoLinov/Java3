@@ -1,6 +1,7 @@
 package lesson1.generics;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Box<E extends Fruit> {
 
@@ -20,9 +21,7 @@ public class Box<E extends Fruit> {
 
     public float sumWeight() {
         if (!data.isEmpty()) {
-            for (E fruit : data) {
-                return fruit.getWeight() * data.size();
-            }
+            return data.get(0).getWeight() * data.size();
         }
         return 0;
     }
@@ -31,10 +30,8 @@ public class Box<E extends Fruit> {
         return this.sumWeight() == box.sumWeight();
     }
 
-    public void transfer(Box<E> box) {
-        for (E item : data) {
-            box.addFruit(item);
-        }
+    public void transfer(Box<? super E> box) {
+        box.data.addAll(data);
         data.clear();
     }
 
