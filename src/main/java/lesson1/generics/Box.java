@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Box<E extends Fruit> {
 
-    private ArrayList<E> data;
+    private final ArrayList<E> data;
 
     public Box() {
         data = new ArrayList<>();

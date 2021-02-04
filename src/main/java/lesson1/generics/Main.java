@@ -5,10 +5,10 @@ public class Main {
     public static void main(String[] args) {
         Apple apple = new Apple();
         Orange orange = new Orange();
-        Box<Apple> box1 = new Box();
-        Box<Apple> box2 = new Box();
-        Box<Orange> box3 = new Box();
-        Box<Orange> box4 = new Box();
+        Box<Apple> box1 = new Box<>();
+        Box<Apple> box2 = new Box<>();
+        Box<Orange> box3 = new Box<>();
+        Box<Orange> box4 = new Box<>();
         /*Box<Fruit> box5 = new Box();
         box5.addFruit(apple);
         box5.addFruit(orange); //было любопытно  */
