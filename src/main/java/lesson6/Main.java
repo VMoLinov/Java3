@@ -1,7 +1,6 @@
 package lesson6;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
 
 public class Main {
 
@@ -30,7 +29,7 @@ public class Main {
             if (original[i] == NUMBER_FOR_CONVERT) index = i + 1;
         }
         if (index == null) {
-            throw new RuntimeException("Массив не содержит значение 4");
+            throw new RuntimeException("Массив не содержит значение " + NUMBER_FOR_CONVERT);
         }
         int[] convert = new int[original.length - index];
         for (int i = index, j = 0; i < original.length; i++, j++) {
